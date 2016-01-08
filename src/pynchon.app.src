@@ -1,9 +1,12 @@
 %% -*- erlang -*-
-{application, 'pynchon',
- [{description, ""},
-  {vsn, "0.0.3"},
-  {modules, []},
-  {registered, []},
+{application,    'pynchon',
+ [{description,  "A collection of arrow macros."},
+  {vsn,          "0.0.3"},
+  {registered,   []},
   {applications, [kernel, stdlib]},
-  {included_applications, []},
-  {env, []}]}.
+  {env,          []},
+  {modules,      []},
+
+  {contributors, ["Eric Bailey <eric@ericb.me>"]},
+  {licenses,     ["EPL"]},
+  {links,        [{"GitHub", "https://github.com/quasiquoting/pynchon"}]}]}.

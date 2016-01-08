@@ -4,3 +4,10 @@ A collection of arrow macros.
 Ported from [[https://github.com/rplevy][@rplevy]]'s [[https://github.com/rplevy/swiss-arrows][Clojure version]].
 
 See [[https://github.com/rplevy/swiss-arrows/blob/master/README.md][the README]] for more information.
+
+** License
+Copyright (C) 2012 Robert P. Levy
+
+Copyright (C) 2015 Eric Bailey
+
+Distributed under the Eclipse Public License, the same as Clojure.
