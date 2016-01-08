@@ -75,7 +75,7 @@
                         ('false (list 'apply x))))
                     t)))))
 
-(defmacro ok-<>>
+(defmacro ok-<>
   "Like the diamond wand version of some-> but Erlangy.
 
   Thread val in (= `#(ok ,val) x), otherwise return x."

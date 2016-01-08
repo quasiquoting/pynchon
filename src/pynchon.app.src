@@ -1,7 +1,7 @@
 %% -*- erlang -*-
 {application, 'pynchon',
  [{description, ""},
-  {vsn, "0.0.2"},
+  {vsn, "0.0.3"},
   {modules, []},
   {registered, []},
   {applications, [kernel, stdlib]},
