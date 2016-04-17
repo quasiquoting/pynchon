@@ -8,10 +8,7 @@ before_script:
 env: PATH=$PATH:.
 script: make test
 notifications:
-  email:
-    - quasiquoting@gmail.com
+  email: false
 otp_release:
   - 18.2
-  - 17.5
-  - R16B03
-  - R15B03
+  - 18.0

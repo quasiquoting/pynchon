@@ -1,12 +1,13 @@
 %% -*- erlang -*-
-{application,    pynchon,
- [{description,  "A collection of arrow macros."},
-  {vsn,          "0.1.0"},
+{application,    pynchon, [
+  {description,  "A collection of arrow macros."},
+  {vsn,          "0.1.1"},
   {registered,   []},
   {applications, [kernel, stdlib]},
   {env,          []},
   {modules,      []},
 
-  {contributors, ["Eric Bailey <eric@ericb.me>"]},
+  {maintainers,  ["Eric Bailey"]},
   {licenses,     ["EPL"]},
-  {links,        [{"GitHub", "https://github.com/quasiquoting/pynchon"}]}]}.
+  {links,        [{"GitHub", "https://github.com/quasiquoting/pynchon"}]}
+]}.
