@@ -4,7 +4,7 @@
 (eval-when-compile
   (defun replace (smap lst)
     "Given a map of replacement pairs and a list/form, return a list/form with
-    any elements = a key in `SMAP' replaced with the corresponding val in `SMAP'."
+    any elements = a key in `smap` replaced with the corresponding val in `smap`."
     (lists:map (lambda (x) (maps:get x smap x)) lst)))
 
 (defmacro -<>*
@@ -65,15 +65,29 @@
   (`(,form . ,branches)
    `(furcula* -<>> false ,form ,branches)))
 
-(defmacro apply->>
-  "applicative ->>"
-  (`(,h . ,t)
-   `(->> ,@(cons h (lists:map
-                    (lambda (x)
-                      (case (is_list x)
-                        ('true  (cons 'apply x))
-                        ('false (list 'apply x))))
-                    t)))))
+;; (defmacro apply->
+;;   "applicative ->"
+;;   (`(,h . ,t)
+;;    `(-> ,@(cons h
+;;                 (lists:map
+;;                   (lambda (el)
+;;                     (if (is_list el)
+;;                       `(funcall ,(car el) ,@(cdr el))
+;;                       (list `(partial #'apply/2 (lambda (x) ))))
+;;                     (if (coll? el#)
+;;                       `((partial apply ,(first el#)) ,@(rest el#))
+;;                       (list `(partial apply ~el#))))
+;;                   t)))))
+
+;; (defmacro apply->>
+;;   "applicative ->>"
+;;   (`(,h . ,t)
+;;    `(->> ,@(cons h (lists:map
+;;                      (lambda (x)
+;;                        (if (is_list x)
+;;                          (cons 'apply x)
+;;                          (list 'apply x)))
+;;                      t)))))
 
 (defmacro ok-<>
   "Like the diamond wand version of some-> but Erlangy.
@@ -97,21 +111,6 @@
         (_ ,'y))))
   (`(,x ,form . ,forms) `(ok-<>> (ok-<>> ,x ,form) ,@forms)))
 
-(defmacro apply->
-  "applicative ->"
-  (`(,h . ,t)
-   `(-> ,@(cons h
-                (lists:map
-                 (lambda (el)
-                   (case (is_list el)
-                     ('true `(funcall ,(car el) ,@(cdr el)))
-                     ('false (list `(partial #'apply/2 (lambda (x) ))))
-                     )
-                   (if (coll? el#)
-                     `((partial apply ,(first el#)) ,@(rest el#))
-                     (list `(partial apply ~el#))))
-                 t)))))
-
 (defmacro -!>
   "non-updating -> for unobtrusive side-effects"
   (`(,form . ,forms)
@@ -132,15 +131,6 @@
   "non-updating -<>> for unobtrusive side-effects"
   (`(,form . ,forms)
    `(progn (-<>> ,form ,@forms) ,form)))
-
-
-;;; The following allow developers to use (include-lib ...) on this file and
-;;; pull in the functions from the passed module, making them available to
-;;; call as if they were part of the language.
-;; (defmacro generate-arrows-wrappers ()
-;;   `(progn ,@(kla:wrap-mod-funcs 'arrows)))
-
-;; (generate-arrows-wrappers)
 
 (defun loaded-arrows ()
   "This is just a dummy function for display purposes when including from the

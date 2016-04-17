@@ -1,7 +1,7 @@
 %% -*- erlang -*-
-{application,    'pynchon',
+{application,    pynchon,
  [{description,  "A collection of arrow macros."},
-  {vsn,          "0.0.3"},
+  {vsn,          "0.1.0"},
   {registered,   []},
   {applications, [kernel, stdlib]},
   {env,          []},

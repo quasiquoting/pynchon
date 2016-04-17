@@ -1,0 +1,17 @@
+language: erlang
+git:
+  submodules: false
+install: true
+before_script:
+    - wget https://s3.amazonaws.com/rebar3/rebar3
+    - chmod +x rebar3
+env: PATH=$PATH:.
+script: make test
+notifications:
+  email:
+    - quasiquoting@gmail.com
+otp_release:
+  - 18.2
+  - 17.5
+  - R16B03
+  - R15B03
