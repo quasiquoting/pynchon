@@ -1,7 +1,6 @@
 # pynchon
 
 [![Build Status](https://travis-ci.org/quasiquoting/pynchon.svg?branch=master)](https://travis-ci.org/quasiquoting/pynchon)
-[![Hex.pm](https://img.shields.io/hexpm/v/pynchon.svg)](https://hex.pm/packages/pynchon)
 [![Min Erlang version](https://img.shields.io/badge/erlang-%E2%89%A518.x-red.svg)](http://www.erlang.org/downloads)
 [![Apache License](https://img.shields.io/badge/license-EPL-blue.svg)](LICENSE)
 <!-- [![img](https://img.shields.io/badge/docs-67%25-green.svg)](http://lfe-mug.github.io/lmug-inets) -->
