@@ -1,6 +1,5 @@
 (defmodule include-arrows-tests
-  (behaviour ltest-unit)
-  (export all))
+  (behaviour ltest-unit))
 
 (include-lib "ltest/include/ltest-macros.lfe")
 (include-lib "pynchon/include/arrows.lfe")
