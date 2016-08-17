@@ -1,6 +1,5 @@
 (include-lib "clj/include/compose.lfe")
 
-
 (eval-when-compile
   (defun replace (smap lst)
     "Given a map of replacement pairs and a list/form, return a list/form with
