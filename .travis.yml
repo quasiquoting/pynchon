@@ -10,5 +10,5 @@ script: make test
 notifications:
   email: false
 otp_release:
-  - 18.2
+  - 18.3
   - 18.0
