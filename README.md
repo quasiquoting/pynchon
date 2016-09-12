@@ -18,6 +18,6 @@ for more information.
 
 Copyright (C) 2012 Robert P. Levy
 
-Copyright (C) 2015 Eric Bailey
+Copyright (C) 2015-2016 Eric Bailey
 
 Distributed under the Eclipse Public License, the same as Clojure.
