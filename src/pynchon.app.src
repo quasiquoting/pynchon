@@ -1,13 +1,17 @@
-%% -*- erlang -*-
+%%% -*- mode: erlang; flycheck-mode: nil -*-
+
 {application,    pynchon, [
   {description,  "A collection of arrow macros."},
-  {vsn,          "0.2.3"},
+  {vsn,          "0.3.3"},
   {registered,   []},
-  {applications, [kernel, stdlib]},
+  {applications, [kernel, stdlib, lfe]},
   {env,          []},
-  {modules,      []},
+  {modules,      [pynchon]},
 
   {maintainers,  ["Eric Bailey"]},
   {licenses,     ["EPL"]},
-  {links,        [{"GitHub", "https://github.com/quasiquoting/pynchon"}]}
+  {links, [
+    {"GitHub",        "https://github.com/quasiquoting/pynchon"},
+    {"Documentation", "http://quasiquoting.org/pynchon"}
+  ]}
 ]}.

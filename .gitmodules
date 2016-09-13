@@ -1,4 +1,0 @@
-[submodule "doc"]
-	path = doc
-	url = git@github.com:quasiquoting/pynchon.git
-	branch = gh-pages

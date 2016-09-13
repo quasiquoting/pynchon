@@ -38,7 +38,7 @@
             '(1 2 3 0))
   ;; TODO: map
   ;; TODO: atom/fun
-  ;; (is-error 'unbound-func (eval '(-<> 0 (list <> <>))))
+  (is-error #(unbound_func #(-<> 2)) (eval '(-<> 0 (list <> <>))))
   (is-equal (-<> 0 (list 1 2 3))
             '(0 1 2 3))
   (is-equal (-<>> 0 (list 1 2 3))
@@ -68,7 +68,7 @@
              (let ((x 'nonsense)))
              (if (not (is_atom x)) 'foo)
              (let ((more 'blah)) more))
-            (->>
+            (clj:->>
              (let ((more 'blah)) more)
              (if (not (is_atom x)) 'foo)
              (let ((x 'nonsense)))))
@@ -94,8 +94,8 @@
                 (list 4))
             '#((3 2) (3 3) (3 4)))
   (is-equal (-< (+ 1 2)
-                (->> (tuple) (lists:duplicate 3))
-                (-> (* 2) (list))
+                (clj:->> (tuple) (lists:duplicate 3))
+                (clj:-> (* 2) (list))
                 (list 4))
             '#((#(3) #(3) #(3)) (6) (3 4)))
   (is-equal (-<< (+ 1 2)
@@ -114,21 +114,3 @@
                    (list 9 4 <>)
                    (list 10 11))
             '#((3 2 1) (5 3 7) (9 4 3) (10 11 3))))
-
-;; (deftest applicative
-;;   (is-equal (apply->> '((1 2) (3 4)) (#'lists:append/2) (#'+/4))
-;;             10)
-;;   (is-equal (apply->> '((1 2) (3 4)) (#'lists:append/2))
-;;             '(1 2 3 4))
-;;   ;; TODO: think on these
-;;   ;; (is (= (apply->> [[1 2] [3 4]] (concat [5 6]))
-;;   ;;        [1 2 3 4]))
-;;   ;; (is (= (apply->> [[1 2] [3 4]] (concat [5 6]) (+))
-;;   ;;        21))
-;;   ;; (is (= (apply-> [[1 2] [3 4]] concat +)
-;;   ;;        10))
-;;   ;; (is (= (apply-> [1 2 3 4] (concat [[5 6]]))
-;;   ;;        [1 2 3 4 5 6]))
-;;   ;; (is (= (apply-> [1 2 3 4] (concat [[5 6]]) (+))
-;;   ;;        21))
-;;   )
