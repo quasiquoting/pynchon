@@ -2,7 +2,7 @@
 
 {application,    pynchon, [
   {description,  "A collection of arrow macros."},
-  {vsn,          "0.3.3"},
+  {vsn,          "0.4.0"},
   {registered,   []},
   {applications, [kernel, stdlib, lfe]},
   {env,          []},
