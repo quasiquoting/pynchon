@@ -1,4 +1,5 @@
 (defmodule include-arrows-tests
+  "include/arrows.lfe tests"
   (behaviour ltest-unit))
 
 (include-lib "ltest/include/ltest-macros.lfe")
