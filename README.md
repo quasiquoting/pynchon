@@ -69,8 +69,11 @@ To use the arrow macros, you can either include `arrows.lfe`:
 ## Documentation
 
 For (admittedly sparse) documentation, check out the
-[Lodox]-generated [API docs][Doc link] as well as the [usage examples][README]
-from the original [swiss-arrows] repo.
+[Lodox]-generated [API docs][Doc link].
+
+Be sure to peruse the [usage examples][README] in the original [swiss-arrows]
+repo, too. While there are some *Clojurisms* that don't translate to LFE, the
+general ideas should apply reasonably well.
 
 [Lodox]: https://github.com/lfe-rebar3/lodox
 
