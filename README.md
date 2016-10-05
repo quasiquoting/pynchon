@@ -31,15 +31,58 @@ distributed under the [CC BY-SA 3.0] license.
 [Zafiroblue05]: https://en.wikipedia.org/wiki/User:Zafiroblue05
 [CC BY-SA 3.0]: http://creativecommons.org/licenses/by-sa/3.0/
 
+## Installation
+
+Add `pynchon` to your `deps` in your `rebar.config`:
+
+```erlang
+{deps, [
+  {git, "git://github.com/quasiquoting/pynchon.git",
+   {tag, "0.4.0"}}
+]}.
+```
+
+## Usage
+
+To use the arrow macros, you can either include `arrows.lfe`:
+
+```lfe
+(include-lib "pynchon/include/arrows.lfe")
+
+(defun foo ()
+  (-<>< (+ 1 2)
+        (list <> 2 1)
+        (list 5 <> 7)
+        (list 9 4 <>)))
+```
+
+... or make fully-qualified calls to the exported macros:
+
+```lfe
+(defun bar ()
+  (pynchon:-<>< (+ 1 2)
+                (list <> 2 1)
+                (list 5 <> 7)
+                (list 9 4 <>)))
+```
+
+## Documentation
+
+For (admittedly sparse) documentation, check out the
+[Lodox]-generated [API docs][Doc link] as well as the [usage examples][README]
+from the original [swiss-arrows] repo.
+
+[Lodox]: https://github.com/lfe-rebar3/lodox
+
 ## Credits
 
-*Copied from the `swiss-arrows` [README].*
+*Copied from the [swiss-arrows][] [README].*
 
-Walter Tetzner, Stephen Compall, and I designed and implemented something
-similar to the "diamond wand" a couple of years ago.
-
-Thanks to Alex Baranosky, Roman Perepelitsa, Paul Dorman, [@rebcabin], and
-Stephen Compall for code contributions and conceptual contributions.
+> Walter Tetzner, Stephen Compall, and I designed and implemented something
+> similar to the "diamond wand" a couple of years ago.
+>
+> Thanks to Alex Baranosky, Roman Perepelitsa, Paul Dorman, [@rebcabin], and
+> Stephen Compall for code contributions and conceptual contributions.
 
 [@rebcabin]: https://github.com/rebcabin
 
