@@ -1,12 +1,15 @@
 # pynchon
 
 [![Build Status][Travis badge]][Travis link]
+[![Hex.pm][Hex badge]][Hex link]
 [![Min Erlang version][Erlang badge]][erlang.org]
 [![Documentation][Doc badge]][Doc link]
 [![Eclipse Public License][EPL badge]](LICENSE)
 
 [Travis badge]: https://travis-ci.org/quasiquoting/pynchon.svg?branch=master
 [Travis link]: https://travis-ci.org/quasiquoting/pynchon
+[Hex badge]: https://img.shields.io/hexpm/v/pynchon.svg
+[Hex link]: https://hex.pm/packages/pynchon
 [Erlang badge]: https://img.shields.io/badge/erlang-%E2%89%A518.x-red.svg
 [erlang.org]: http://www.erlang.org/downloads
 [EPL badge]: https://img.shields.io/badge/license-EPL-blue.svg
@@ -37,8 +40,7 @@ Add `pynchon` to your `deps` in your `rebar.config`:
 
 ```erlang
 {deps, [
-  {git, "git://github.com/quasiquoting/pynchon.git",
-   {tag, "0.4.0"}}
+  {pynchon, "0.5.0"}
 ]}.
 ```
 

@@ -6,6 +6,7 @@ before_script:
 env: PATH=$PATH:.
 script: make test
 otp_release:
+  - 19.1
   - 19.0
   - 18.3
   - 18.0
