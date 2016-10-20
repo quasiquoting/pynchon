@@ -27,7 +27,8 @@
        (match-lambda
          ((0 'first) `(,h ,x ,@t))
          ((0 'last)  `(,h ,@t ,x))
-         ((1 _)      `(,h ,@(replace `#m(<> ,x) t))))
+         ((1 _)      `(,h ,@(replace `#m(<> ,x) t)))
+         ((n pos) (error `#(too-many-<> ,n) (list form x default-position))))
        (lists:foldl (lambda (y n) (if (=:= '<> y) (+ n 1) n)) 0 form)
        default-position))
     ([form _ _] form))
