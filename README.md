@@ -1,12 +1,15 @@
 # pynchon
 
 [![Build Status][Travis badge]][Travis link]
+[![Hex.pm][Hex badge]][Hex link]
 [![Min Erlang version][Erlang badge]][erlang.org]
 [![Documentation][Doc badge]][Doc link]
 [![Eclipse Public License][EPL badge]](LICENSE)
 
 [Travis badge]: https://travis-ci.org/quasiquoting/pynchon.svg?branch=master
 [Travis link]: https://travis-ci.org/quasiquoting/pynchon
+[Hex badge]: https://img.shields.io/hexpm/v/pynchon.svg
+[Hex link]: https://hex.pm/packages/pynchon
 [Erlang badge]: https://img.shields.io/badge/erlang-%E2%89%A518.x-red.svg
 [erlang.org]: http://www.erlang.org/downloads
 [EPL badge]: https://img.shields.io/badge/license-EPL-blue.svg
@@ -37,8 +40,7 @@ Add `pynchon` to your `deps` in your `rebar.config`:
 
 ```erlang
 {deps, [
-  {git, "git://github.com/quasiquoting/pynchon.git",
-   {tag, "0.4.0"}}
+  {pynchon, "0.5.0"}
 ]}.
 ```
 
@@ -68,9 +70,14 @@ To use the arrow macros, you can either include `arrows.lfe`:
 
 ## Documentation
 
-For (admittedly sparse) documentation, check out the
-[Lodox]-generated [API docs][Doc link] as well as the [usage examples][README]
-from the original [swiss-arrows] repo.
+For (sparse) documentation, check out the
+[Lodox]-generated [API docs][Doc link].
+
+Be sure to peruse the [usage examples][README] in the original [swiss-arrows]
+repo, too.
+<br>
+Although some Clojure idioms therein don't translate to LFE,
+the general ideas apply.
 
 [Lodox]: https://github.com/lfe-rebar3/lodox
 

@@ -27,16 +27,20 @@
        (match-lambda
          ((0 'first) `(,h ,x ,@t))
          ((0 'last)  `(,h ,@t ,x))
-         ((1 _)      `(,h ,@(replace `#m(<> ,x) t))))
+         ((1 _)      `(,h ,@(replace `#m(<> ,x) t)))
+         ((n pos) (error `#(too-many-<> ,n) (list form x default-position))))
        (lists:foldl (lambda (y n) (if (=:= '<> y) (+ n 1) n)) 0 form)
        default-position))
     ([form _ _] form))
-  (defun furcula*
-    ([operator 'false form branches]
-     (cons 'tuple
-           (lists:map
-             (lambda (branch) `(,operator ,form ,branch))
-             branches)))))
+  (defun fold-<>* (x forms default-position)
+    (lists:foldl
+      (lambda (form x*) (-<>* form x* default-position))
+      x forms))
+  (defun furcula* (operator form branches)
+    (cons 'tuple
+          (lists:map
+            (lambda (branch) `(,operator ,form ,branch))
+            branches))))
 
 ;;; ========================================================= [ clj re-exports ]
 
@@ -56,7 +60,7 @@
   mostly behave as the thread-first macro, [[->]]."
   (`(,x) x)
   (`(,x ,form) (-<>* form x 'first))
-  (`(,x ,form . ,forms) `(-<> (-<> ,x ,form) ,@forms)))
+  (`(,x . ,forms) (fold-<>* x forms 'first)))
 
 (defmacro -<>>
   "The *diamond spear*: top-level insertion of `x` in place of single
@@ -64,36 +68,36 @@
   mostly behave as the thread-last macro, [[->>]]."
   (`(,x) x)
   (`(,x ,form) (-<>* form x 'last))
-  (`(,x ,form . ,forms) `(-<>> (-<>> ,x ,form) ,@forms)))
+  (`(,x . ,forms) (fold-<>* x forms 'last)))
 
 ;;; ======================================================= [ Back arrow macro ]
 
 (defmacro <<- forms
   "The *back-arrow*.
   Equivalent to `(`[[->>]] `,@(lists:reverse forms))`."
-  `(->> ,@(lists:reverse forms)))
+  `(clj:->> ,@(lists:reverse forms)))
 
 ;;; ========================================================= [ Furcula macros ]
 
 (defmacro -<
   "*The furcula*: branch one result into multiple flows."
   (`(,form . ,branches)
-   (furcula* '-> 'false form branches)))
+   (furcula* 'clj:-> form branches)))
 
 (defmacro -<<
   "*The trystero furcula*: analog of [[->>]] for furcula."
   (`(,form . ,branches)
-   (furcula* '->> 'false form branches)))
+   (furcula* 'clj:->> form branches)))
 
 (defmacro -<><
   "*The diamond fishing rod*: analog of [[-<>]] for furcula."
   (`(,form . ,branches)
-   (furcula* '-<> 'false form branches)))
+   (furcula* 'pynchon:-<> form branches)))
 
 (defmacro -<>><
   "*The diamond harpoon*: analog of [[-<>>]] for furcula."
   (`(,form . ,branches)
-   (furcula* '-<>> 'false form branches)))
+   (furcula* 'pynchon:-<>> form branches)))
 
 ;;; ==================================================== [ ok-threading macros ]
 
@@ -126,22 +130,21 @@
 (defmacro -!>
   "Non-updating [[->]] for unobtrusive side-effects."
   (`(,form . ,forms)
-   ;; `(let ((x ,form)) (-> x# ~@forms) x#)
-   `(progn (-> ,form ,@forms) ,form)))
+   `(clj:doto ,form (clj:-> ,@forms))))
 
 (defmacro -!>>
   "Non-updating [[->>]] for unobtrusive side-effects."
   (`(,form . ,forms)
-   `(progn (->> ,form ,@forms) ,form)))
+   `(clj:doto ,form (clj:->> ,@forms))))
 
 (defmacro -!<>
   "Non-updating [[-<>]] for unobtrusive side-effects."
   (`(,form . ,forms)
-   `(progn (-<> ,form ,@forms) ,form)))
+   `(clj:doto ,form (pynchon:-<> ,@forms))))
 
 (defmacro -!<>>
   "Non-updating [[-<>>]] for unobtrusive side-effects."
   (`(,form . ,forms)
-   `(progn (-<>> ,form ,@forms) ,form)))
+   `(clj:doto ,form (pynchon:-<>> ,@forms))))
 
 ;;; ==================================================================== [ EOF ]
