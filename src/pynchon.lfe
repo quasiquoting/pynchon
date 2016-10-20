@@ -126,22 +126,21 @@
 (defmacro -!>
   "Non-updating [[->]] for unobtrusive side-effects."
   (`(,form . ,forms)
-   ;; `(let ((x ,form)) (-> x# ~@forms) x#)
-   `(progn (-> ,form ,@forms) ,form)))
+   `(clj:doto ,form (clj:-> ,@forms))))
 
 (defmacro -!>>
   "Non-updating [[->>]] for unobtrusive side-effects."
   (`(,form . ,forms)
-   `(progn (->> ,form ,@forms) ,form)))
+   `(clj:doto ,form (clj:->> ,@forms))))
 
 (defmacro -!<>
   "Non-updating [[-<>]] for unobtrusive side-effects."
   (`(,form . ,forms)
-   `(progn (-<> ,form ,@forms) ,form)))
+   `(clj:doto ,form (pynchon:-<> ,@forms))))
 
 (defmacro -!<>>
   "Non-updating [[-<>>]] for unobtrusive side-effects."
   (`(,form . ,forms)
-   `(progn (-<>> ,form ,@forms) ,form)))
+   `(clj:doto ,form (pynchon:-<>> ,@forms))))
 
 ;;; ==================================================================== [ EOF ]
