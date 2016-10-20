@@ -31,12 +31,11 @@
        (lists:foldl (lambda (y n) (if (=:= '<> y) (+ n 1) n)) 0 form)
        default-position))
     ([form _ _] form))
-  (defun furcula*
-    ([operator 'false form branches]
-     (cons 'tuple
-           (lists:map
-             (lambda (branch) `(,operator ,form ,branch))
-             branches)))))
+  (defun furcula* (operator form branches)
+    (cons 'tuple
+          (lists:map
+            (lambda (branch) `(,operator ,form ,branch))
+            branches))))
 
 ;;; ========================================================= [ clj re-exports ]
 
@@ -78,22 +77,22 @@
 (defmacro -<
   "*The furcula*: branch one result into multiple flows."
   (`(,form . ,branches)
-   (furcula* '-> 'false form branches)))
+   (furcula* 'clj:-> form branches)))
 
 (defmacro -<<
   "*The trystero furcula*: analog of [[->>]] for furcula."
   (`(,form . ,branches)
-   (furcula* '->> 'false form branches)))
+   (furcula* 'clj:->> form branches)))
 
 (defmacro -<><
   "*The diamond fishing rod*: analog of [[-<>]] for furcula."
   (`(,form . ,branches)
-   (furcula* '-<> 'false form branches)))
+   (furcula* 'pynchon:-<> form branches)))
 
 (defmacro -<>><
   "*The diamond harpoon*: analog of [[-<>>]] for furcula."
   (`(,form . ,branches)
-   (furcula* '-<>> 'false form branches)))
+   (furcula* 'pynchon:-<>> form branches)))
 
 ;;; ==================================================== [ ok-threading macros ]
 
