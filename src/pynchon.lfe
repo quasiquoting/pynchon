@@ -74,7 +74,7 @@
 (defmacro <<- forms
   "The *back-arrow*.
   Equivalent to `(`[[->>]] `,@(lists:reverse forms))`."
-  `(->> ,@(lists:reverse forms)))
+  `(clj:->> ,@(lists:reverse forms)))
 
 ;;; ========================================================= [ Furcula macros ]
 
