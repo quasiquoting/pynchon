@@ -31,6 +31,10 @@
        (lists:foldl (lambda (y n) (if (=:= '<> y) (+ n 1) n)) 0 form)
        default-position))
     ([form _ _] form))
+  (defun fold-<>* (x forms default-position)
+    (lists:foldl
+      (lambda (form x*) (-<>* form x* default-position))
+      x forms))
   (defun furcula* (operator form branches)
     (cons 'tuple
           (lists:map
@@ -55,7 +59,7 @@
   mostly behave as the thread-first macro, [[->]]."
   (`(,x) x)
   (`(,x ,form) (-<>* form x 'first))
-  (`(,x ,form . ,forms) `(-<> (-<> ,x ,form) ,@forms)))
+  (`(,x . ,forms) (fold-<>* x forms 'first)))
 
 (defmacro -<>>
   "The *diamond spear*: top-level insertion of `x` in place of single
@@ -63,7 +67,7 @@
   mostly behave as the thread-last macro, [[->>]]."
   (`(,x) x)
   (`(,x ,form) (-<>* form x 'last))
-  (`(,x ,form . ,forms) `(-<>> (-<>> ,x ,form) ,@forms)))
+  (`(,x . ,forms) (fold-<>* x forms 'last)))
 
 ;;; ======================================================= [ Back arrow macro ]
 
